@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let turno = prompt("Em que turno você estuda? Digite 'M' para matutino, 'V' para vespertino ou 'N' para noturno:");
+        turno = turno.toUpperCase();
+        
+        switch (turno) {
+            case 'M':
+                alert("Bom dia!");
+                break;
+            case 'V':
+                alert("Boa tarde!");
+                break;
+            case 'N':
+                alert("Boa noite!");
+                break;
+            default:
+                if (turno === 'M' || turno === 'V' || turno === 'N') {
+                    
+                    break;
+                }
+                alert("Valor inválido");
+        }
+        
+    </script>
+    
+</body>
+</html>

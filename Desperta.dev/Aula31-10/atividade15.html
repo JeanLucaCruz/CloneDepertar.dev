@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ladoA = parseFloat(prompt("Informe o valor do lado A:"));
+let ladoB = parseFloat(prompt("Informe o valor do lado B:"));
+let ladoC = parseFloat(prompt("Informe o valor do lado C:"));
+
+if (ladoA < ladoB + ladoC && ladoB < ladoA + ladoC && ladoC < ladoA + ladoB) {
+    if (ladoA === ladoB && ladoB === ladoC) {
+        document.write("Triângulo equilátero: todos os lados são iguais.");
+    } else if (ladoA === ladoB || ladoA === ladoC || ladoB === ladoC) {
+        document.write("Triângulo isósceles: dois lados são iguais.");
+    } else {
+        document.write("Triângulo escaleno: todos os lados são diferentes.");
+    }
+} else {
+    document.write("Os valores fornecidos não formam um triângulo.");
+}
+
+    </script>
+
+    
+</body>
+</html>

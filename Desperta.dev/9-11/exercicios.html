@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Prática - Funções</title>
+    <style>
+        body {
+            background-color: aquamarine;
+            background-attachment: fixed;
+            background-size: auto;
+            background-repeat: no-repeat;
+            
+        }
+
+        #conteudo {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #888;
+            max-width: 1400px;
+            margin: 20px auto;
+            z-index: 1;
+        }
+        
+        #fundo {
+            background-image: url('./Desp.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px;
+            border: 5px solid #fff; 
+            border-radius: 100px; 
+            padding: 2px;
+            background-color: #084aff; 
+        }
+
+        button {
+            color: rgb(49, 49, 194); 
+            text-decoration: none;
+            width: 80vw; 
+            
+           
+        }
+
+        button:hover {
+             color: #90a5e0;
+             
+        }
+
+        h1 {
+            font-size: 39px;
+            text-align: center;
+            color: rgb(206, 206, 230);
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>Atividade Prática - Funções</h1>
+    <div id="fundo"></div>
+    <div id="conteudo">
+        <h3>1. Crie uma função que recebe 3 notas de um aluno por parâmetro e
+            uma letra. Se a letra for A a função deve calcular a média aritmética,
+            se for P, a média ponderada (peso: 5, 3 e 2).</h3>
+    <button onclick="exercicio1()">Exercício 1</button>
+    <h3>2. Crie uma função que recebe um valor inteiro e retorne verdadeiro se
+        for ímpar ou falso se for par.</h3>
+    <button onclick="exercicio2()">Exercício 2</button>
+    <h3>3. Crie uma função que recebe por parâmetro um valor inteiro e
+        positivo e retorne verdadeiro se o número for primo ou falso se não
+        for.</h3>
+    <button onclick="exercicio3()">Exercício 3</button>
+    <h3>4. Crie uma função que recebe por parâmetro o tempo de duração de
+uma fábrica expressa em segundos e retorna esse tempo em horas,
+minutos e segundos. Ex:
+Entrada: 3672
+Saída: 1:1:12</h3>
+    <button onclick="exercicio4()">Exercício 4</button>
+    <h3>5. Crie uma função que recebe um valor inteiro e retorne verdadeiro se
+        é um valor perfeito ou falso se não for. Um valor é dito perfeito
+        quando ele é igual a soma dos seus divisores excetuando ele
+        próprio. Ex: 6 é perfeito, pois 6 = 1 + 2 + 3, que são seus divisores</h3>
+    <button onclick="exercicio5()">Exercício 5</button>
+    <h3>6. Crie uma função chamada acessoAoSite() que não tenha
+        parâmetro. Esta função será chamada ao abrir a página e mostrará
+        um alerta informando “Bem vindo ao site”.</h3>
+    <button onclick="exercicio6()">Exercício 6</button>
+    <h5>7. Crie uma função chamada mostrarMensagem() que não tenha
+        parâmetro. Esta função será chamada ao abrir a página e mostrará
+        uma mensagem no console.log() informando “Acesso à aplicação
+        NomeAplicação” e um alerta informando “Bem vindo à aplicação
+        NomeApliação”. Sendo que o nome da aplicação deve ser salvo em
+        uma variável para mostrar nas mensagens.</h5>
+    <button onclick="exercicio7()">Exercício 7</button>
+    <h4>8. Crie uma função chamada mostrarDobro(num), que recebe um
+        parâmetro sendo um número inteiro. Esta função será chamada ao
+        abrir a página e mostrará um alerta com o resultado. Exemplo: “O
+        dobro do número 5 é 10.”</h4>
+    <button onclick="exercicio8()">Exercício 8</button>
+    <h5>9. Crie uma função chamada calcularMedia(nota1, nota2, nota3,
+        nome), que recebe 4 parâmetros sendo três inteiros e um texto
+        (String). Esta função será chamada ao abrir a página e mostrará um
+        alerta com a média. Exemplo: “João, sua média é 70.” A função
+        também deve mostrar no console.log() as notas recebidas. Exemplo
+        “Nota 1: 60,Nota 2: 70,Nota 3: 80”.</h5>
+    <button onclick="exercicio9()">Exercício 9</button>
+    </div>
+
+    <script>
+        // Exercício 1
+function exercicio1() {
+    function calcularMedia(notas, letra) {
+        let soma = 0;
+
+        if (letra === 'A') {
+            for (const nota of notas) {
+                soma += nota;
+            }
+            document.write("Média Aritmética: ", soma / notas.length, "<br>");
+        } else if (letra === 'P' && notas.length === 3) {
+            const pesos = [5, 3, 2];
+            let somaPonderada = 0;
+            let somaPesos = 0;
+
+            for (let i = 0; i < notas.length; i++) {
+                somaPonderada += notas[i] * pesos[i];
+                somaPesos += pesos[i];
+            }
+
+            document.write("Média Ponderada: ", somaPonderada / somaPesos, "<br>");
+        }
+    }
+
+    const notas = [7, 8, 9];
+    const letraA = 'A';
+    const letraP = 'P';
+
+    calcularMedia(notas, letraA);
+    calcularMedia(notas, letraP);
+}
+
+// Exercício 2
+function exercicio2() {
+    function ehImpar(valor) {
+        document.write("É ímpar: ", valor % 2 !== 0, "<br>");
+    }
+
+    const numero1 = 7;
+    const numero2 = 10;
+
+    ehImpar(numero1);
+    ehImpar(numero2);
+}
+
+// Exercício 3
+function exercicio3() {
+    function ehPrimo(numero) {
+        if (numero <= 1) {
+            document.write("É primo: ", false, "<br>");
+        } else if (numero === 2) {
+            document.write("É primo: ", true, "<br>");
+        } else {
+            let isPrime = true;
+            for (let i = 2; i <= Math.sqrt(numero); i++) {
+                if (numero % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            document.write("É primo: ", isPrime, "<br>");
+        }
+    }
+
+    const numero3 = 7;
+    const numero4 = 10;
+
+    ehPrimo(numero3);
+    ehPrimo(numero4);
+}
+
+// Exercício 4
+function exercicio4() {
+    function converterParaTempo(segundos) {
+        const horas = segundos / 3600 | 0;
+        segundos %= 3600;
+        const minutos = segundos / 60 | 0;
+        segundos %= 60;
+
+        document.write("Tempo: ", `${horas} horas, ${minutos} minutos e ${segundos} segundos`, "<br>");
+    }
+
+    const tempoEmSegundos = 3672;
+
+    converterParaTempo(tempoEmSegundos);
+}
+
+// Exercício 5
+function exercicio5() {
+    function ehNumeroPerfeito(valor) {
+        if (valor <= 0) {
+            document.write("É número perfeito: ", false, "<br>"); // Números não positivos não são considerados perfeitos.
+        }
+
+        let somaDivisores = 0;
+
+        for (let i = 1; i < valor; i++) {
+            if (valor % i === 0) {
+                somaDivisores += i;
+            }
+        }
+
+        document.write("É número perfeito: ", somaDivisores === valor, "<br>");
+    }
+
+    // Exemplos de uso da função:
+    ehNumeroPerfeito(6); // Deve retornar true (6 é um número perfeito)
+    ehNumeroPerfeito(28); // Deve retornar true (28 é um número perfeito)
+    ehNumeroPerfeito(12); // Deve retornar false (12 não é um número perfeito)
+}    
+     // Exercício 6
+function exercicio6() {
+    function acessoAoSite() {
+        alert("Bem vindo ao site");
+    }
+      
+    acessoAoSite();
+}
+
+// Exercício 7
+function exercicio7() {
+    function mostrarMensagem() {
+        const nomeAplicacao = "AppDoBem"; 
+      
+        alert(`Acesso à aplicação ${nomeAplicacao}`);
+        alert(`Bem vindo à aplicação ${nomeAplicacao}`);
+    }
+      
+    mostrarMensagem();
+}
+
+// Exercício 8
+function exercicio8() {
+    function mostrarDobro(num) {
+        const dobro = num * 2;
+        alert(`O dobro do número ${num} é ${dobro}`);
+    }
+      
+    mostrarDobro(5); 
+}
+
+// Exercício 9
+function exercicio9() {
+    function calcularMedia(nota1, nota2, nota3, nome) {
+        document.write(`Nota 1: ${nota1}, Nota 2: ${nota2}, Nota 3: ${nota3}<br>`);
+        
+        const media = (nota1 + nota2 + nota3) / 3;
+        
+        document.write(`${nome}, sua média é ${media}<br>`);
+    }
+      
+    calcularMedia(60, 70, 80, "João"); 
+}
+
+
+
+       
+    </script>
+</body>
+</html>

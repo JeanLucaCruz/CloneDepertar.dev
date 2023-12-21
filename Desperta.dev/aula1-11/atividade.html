@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let matriz = 
+        [
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]]
+
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    console.log(matriz[i][j])
+                    console.log(matriz[1][2])
+                }
+            }
+
+            for(let linha of matriz) {
+                for(let elemento of linha) {
+                    console.log(`For of: ${elemento}`)
+                }
+            }
+
+            let anosDeVitoriaDaCopa = [1958, 1962, 1970, 1994, 2002];
+
+for (let i = 0; i < anosDeVitoriaDaCopa.length; i++) {
+  document.write("Neste ano de " + anosDeVitoriaDaCopa [i] + ", o Brasil ganhou a Copa do Mundo.<br>");
+}
+
+let rebaixamento = [1991, 2004, 2021]
+for (let ano of rebaixamento) {
+    document.write(`Anos que o Grêmio foi rebaixado ${ano}<br>`)
+
+}
+
+let notas = [];
+
+while (true) {
+  let notaStr = prompt("Insira a nota do aluno (de 0 a 10):");
+  let nota = parseFloat(notaStr);
+
+  if (!isNaN(nota) && nota >= 0 && nota <= 10) {
+    notas.push(nota);
+  } else {
+    alert("Por favor, insira uma nota válida de 0 a 10.");
+  }
+
+  let continuarInserindo = confirm("Deseja inserir mais notas?");
+  if (!continuarInserindo) {
+    break;
+  }
+}
+
+let soma = 0;
+
+for (let nota of notas) {
+  soma += nota;
+}
+
+let media = soma / notas.length;
+
+if (media >= 7) {
+  document.write("A média das notas é " + media.toFixed(2) + ". O aluno está aprovado!");
+} else {
+  document.write("A média das notas é " + media.toFixed(2) + ". O aluno está reprovado.");
+}
+
+
+    </script>
+</body>
+</html>

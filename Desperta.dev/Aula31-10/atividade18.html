@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let precoTabela = parseFloat(prompt("Informe o preço de tabela:"));
+let numeroParcelas = parseInt(prompt("Informe o número de parcelas:"));
+let valorParcela;
+let precoTotal;
+
+if (numeroParcelas === 1) {
+    // À vista com 2,5% de desconto
+    valorParcela = precoTabela - (precoTabela * 0.025);
+    precoTotal = valorParcela;
+} else if (numeroParcelas >= 2 && numeroParcelas <= 5) {
+    // 2 até 5 vezes sem desconto
+    valorParcela = precoTabela / numeroParcelas;
+    precoTotal = precoTabela;
+} else if (numeroParcelas >= 6 && numeroParcelas <= 10) {
+    // 6 até 10 vezes com acréscimo de 6% de juros
+    valorParcela = (precoTabela + (precoTabela * 0.06)) / numeroParcelas;
+    precoTotal = precoTabela + (precoTabela * 0.06);
+} else if (numeroParcelas >= 11 && numeroParcelas <= 15) {
+    // 11 até 15 vezes com acréscimo de 13% de juros
+    valorParcela = (precoTabela + (precoTabela * 0.13)) / numeroParcelas;
+    precoTotal = precoTabela + (precoTabela * 0.13);
+} else {
+    document.write("Número de parcelas inválido.");
+}
+
+document.write("Valor de cada parcela: " + valorParcela.toFixed(2) + (" "));
+
+document.write("Preço total da compra: " + precoTotal.toFixed(2));
+
+    </script>
+    
+</body>
+</html>

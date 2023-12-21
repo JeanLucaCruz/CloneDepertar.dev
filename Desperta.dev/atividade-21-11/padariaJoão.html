@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Padaria do Sr. João</title>
+</head>
+<body>
+
+<script>
+    let produtos = [
+        { id: 1, nome: "Pão Francês", estoque: 100, preco: 1.5 },
+        { id: 2, nome: "Bolo de Chocolate", estoque: 50, preco: 15.0 },
+        { id: 3, nome: "Croissant", estoque: 75, preco: 2.0 },
+        { id: 4, nome: "Pão Integral", estoque: 80, preco: 2.0 },
+        { id: 5, nome: "Rosquinha", estoque: 60, preco: 1.0 },
+        { id: 6, nome: "Torta de Morango", estoque: 30, preco: 20.0 },
+        { id: 7, nome: "Baguete", estoque: 40, preco: 3.0 },
+        { id: 8, nome: "Cupcake de Baunilha", estoque: 25, preco: 4.0 },
+        { id: 9, nome: "Pão de Queijo", estoque: 90, preco: 1.8 },
+        { id: 10, nome: "Brownie", estoque: 35, preco: 5.0 },
+        { id: 11, nome: "Biscoito Amanteigado", estoque: 55, preco: 2.5 },
+    ];
+
+    let carrinho = [];
+    let vendasDiarias = [];
+    let faturamentoDiario = 0;
+
+    function listarProdutos() {
+        alert("Lista de Produtos:\n" + produtos.map(produto => `${produto.nome} - R$${produto.preco.toFixed(2)} - Estoque: ${produto.estoque}`).join("\n"));
+        menuInicial(); 
+    }
+
+    function adicionarProduto() {
+        let nome = prompt("Digite o nome do novo produto:");
+        let preco = parseFloat(prompt("Digite o preço do novo produto:"));
+        let estoque = parseInt(prompt("Digite a quantidade em estoque do novo produto:"));
+
+        let novoProduto = {
+            id: produtos.length + 1,
+            nome: nome,
+            preco: preco,
+            estoque: estoque
+        };
+
+        produtos.push(novoProduto);
+        alert("Novo produto adicionado com sucesso!");
+        menuInicial();
+    }
+
+    function editarProduto() {
+        let id = parseInt(prompt("Digite o ID do produto que deseja editar:"));
+        let produto = produtos.find(p => p.id === id);
+
+        if (produto) {
+            let novoPreco = parseFloat(prompt("Digite o novo preço do produto:"));
+            let novoEstoque = parseInt(prompt("Digite a nova quantidade em estoque do produto:"));
+
+            produto.preco = novoPreco;
+            produto.estoque = novoEstoque;
+
+            alert("Informações do produto atualizadas com sucesso!");
+        } else {
+            alert("Produto não encontrado.");
+        }
+
+        menuInicial();
+    }
+
+    function removerProduto() {
+        let id = parseInt(prompt("Digite o ID do produto que deseja remover:"));
+        let index = produtos.findIndex(p => p.id === id);
+
+        if (index !== -1) {
+            produtos.splice(index, 1);
+            alert("Produto removido com sucesso!");
+        } else {
+            alert("Produto não encontrado.");
+        }
+
+        menuInicial();
+    }
+
+    function receberPedido() {
+        let pedido = [];
+        let continuarPedido = true;
+    
+        while (continuarPedido) {
+            let nomeProduto = prompt("Digite o nome do produto que deseja adicionar ao pedido:");
+            let produto = produtos.find(p => p.nome === nomeProduto);
+    
+            if (produto) {
+                let quantidade = parseInt(prompt(`Digite a quantidade desejada para ${produto.nome} (Estoque disponível: ${produto.estoque}):`));
+    
+                if (quantidade > 0 && quantidade <= produto.estoque) {
+                    pedido.push({ produto: produto, quantidade: quantidade });
+                    produto.estoque -= quantidade;
+                } else {
+                    alert("Quantidade inválida ou insuficiente em estoque.");
+                }
+            } else {
+                alert("Produto não encontrado.");
+            }
+    
+            continuarPedido = confirm("Deseja adicionar mais produtos ao pedido?");
+        }
+    
+        if (pedido.length > 0) {
+            let dataPedido = new Date();
+            carrinho.push({ data: dataPedido, itens: pedido });
+            alert("Pedido recebido com sucesso!");
+    
+            let valorTotalPedido = pedido.reduce((total, item) => total + item.produto.preco * item.quantidade, 0);
+            faturamentoDiario = valorTotalPedido;
+        } else {
+            alert("Pedido vazio. Nenhum produto adicionado.");
+        }
+    
+        menuInicial();
+    }
+    
+    function relatorioDiario() {
+        let dataAtual = new Date();
+        let dia = dataAtual.getDate();
+        let mes = dataAtual.getMonth() + 1; 
+        let ano = dataAtual.getFullYear();
+        let dataFormatada = `${dia}/${mes}/${ano}`;
+    
+        let pedidosDoDia = carrinho.filter(pedido => {
+            let dataPedido = pedido.data;
+    
+            return (
+                dataPedido.getDate() === dia &&
+                dataPedido.getMonth() + 1 === mes &&
+                dataPedido.getFullYear() === ano
+            );
+        });
+    
+        let totalPedidosDoDia = pedidosDoDia.length;
+    
+        let totalFaturamentoDoDia = pedidosDoDia.reduce((total, pedido) => {
+            let valorTotalPedido = pedido.itens.reduce((subtotal, item) => subtotal + item.produto.preco * item.quantidade, 0);
+            return total + valorTotalPedido;
+        }, 0);
+    
+        alert(`Relatório Diário (${dataFormatada}):\nTotal de Pedidos: ${totalPedidosDoDia}\nTotal dos Pedidos: R$${totalFaturamentoDoDia.toFixed(2)}\nItens do Pedido: ${
+            pedidosDoDia.map(pedido => pedido.itens.map(item => `${item.quantidade} x ${item.produto.nome} (R$${(item.produto.preco * item.quantidade).toFixed(2)})`).join(", ")).join("; ")
+        }`);
+    
+        menuInicial();
+    }
+    
+    
+    function menuInicial() {
+        let opcao = prompt("Escolha uma opção:\n1 - Listar Produtos\n2 - Adicionar Produto\n3 - Editar Produto\n4 - Remover Produto\n5 - Receber Pedido\n6 - Somar Estoque\n7 - Relatório Diário\n0 - Sair");
+
+        switch (opcao) {
+            case "1":
+                listarProdutos();
+                break;
+            case "2":
+                adicionarProduto();
+                break;
+            case "3":
+                editarProduto();
+                break;
+            case "4":
+                removerProduto();
+                break;
+            case "5":
+                receberPedido();
+                break;
+            case "6":
+                somarEstoque();
+                break;
+            case "7":
+                relatorioDiario();
+                break;
+            case "0":
+                alert("Saindo do sistema.");
+                break;
+            default:
+                alert("Opção inválida. Tente novamente.");
+                menuInicial();
+        }
+    }
+
+    menuInicial();
+</script>
+</body>
+</html>

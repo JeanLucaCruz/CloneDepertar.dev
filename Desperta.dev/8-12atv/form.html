@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+
+<body>
+
+    <h1>Formulário</h1>
+
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+        <form id="formDadosPessoais">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+            <br>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" required>
+            <br>
+
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" required>
+            <br>
+
+            <label for="estado">Estado:</label>
+            <select id="estado" required>
+                <option value="SP">São Paulo</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+
+            </select>
+        </form>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <legend>Dados Profissionais</legend>
+        <form id="formDadosProfissionais">
+            <label>Natureza de Cargo:</label>
+            <br>
+            <input type="radio" name="cargo" value="gerencia" id="gerencia" required>
+            <label for="gerencia">Gerencia</label>
+
+            <input type="radio" name="cargo" value="financeiro" id="financeiro" required>
+            <label for="financeiro">Financeiro</label>
+
+            <input type="radio" name="cargo" value="recepcaon" id="recepcaon" required>
+            <label for="recepcaon">Recepção</label>
+
+            <input type="radio" name="cargo" value="administrativo" id="administrativo" required>
+            <label for="administrativo">Administração</label>
+
+            <input type="radio" name="cargo" value="juridico" id="juridico" required>
+            <label for="juridico">Jurídico</label>
+
+            <br>
+            <br>
+
+
+            <label for="areaInteresse">Área de Interesse (Selecione uma ou mais):</label>
+            <br>
+            <input type="checkbox" name="checkboxInteresse" value="tecnologia" id="tecnologiaCheckbox" checked>
+            <label for="tecnologiaCheckbox">Tecnologia</label>
+
+            <input type="checkbox" name="checkboxInteresse" value="biologia" id="biologiaCheckbox">
+            <label for="biologiaCheckbox">Biologia</label>
+
+
+            <input type="checkbox" name="checkboxInteresse" value="meioambiante" id="meioambiante">
+            <label for="meioambiante">Meio Ambiente</label>
+
+            <input type="checkbox" name="checkboxInteresse" value="engenharia" id="engenharia">
+            <label for="engenharia">Engenharia</label>
+
+            <input type="checkbox" name="checkboxInteresse" value="historia" id="historia">
+            <label for="historia">História</label>
+
+            <br>
+            <br>
+
+            <label for="miniCurriculo">Mini-Currículo:</label>
+            <textarea style="width: 335px; height: 100px;" id="miniCurriculo"></textarea>
+
+            <br>
+
+        </form>
+    </fieldset>
+
+    <br>
+
+    <button type="button" onclick="capturarDados()">Enviar</button>
+    <button type="button" onclick="limparFormulario()">Limpar</button>
+
+    <script>
+        function capturarDados() {
+            const dadosPessoais = {
+                nome: document.getElementById('nome').value,
+                endereco: document.getElementById('endereco').value,
+                cidade: document.getElementById('cidade').value,
+                estado: document.getElementById('estado').value,
+            };
+
+            const cargoSelecionado = document.querySelector('input[name="cargo"]:checked');
+
+            const checkboxInteresseSelecionados = document.querySelectorAll('input[name="checkboxInteresse"]:checked');
+            const areaInteresseSelecionada = Array.from(checkboxInteresseSelecionados).map(checkbox => checkbox.value);
+
+            const dadosProfissionais = {
+                cargo: cargoSelecionado ? cargoSelecionado.value : '',
+                areaInteresse: areaInteresseSelecionada,
+                miniCurriculo: document.getElementById('miniCurriculo').value,
+            };
+
+            console.log('Dados Pessoais:', dadosPessoais);
+            console.log('Dados Profissionais:', dadosProfissionais);
+        }
+
+        function limparFormulario() {
+            document.getElementById('formDadosPessoais').reset();
+            document.getElementById('formDadosProfissionais').reset();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: lightgray;
+        }
+
+        .container {
+            width: 98vh;
+            height: 98vh;
+            position: relative;
+            margin: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            background: blue;
+            z-index: 1;
+        }
+
+        .quadrado {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .red {
+            background-color: red;
+            width: 75%;
+            padding-top: 75%;
+            z-index: 2;
+        }
+
+        .black {
+            background-color: black;
+            width: 65%;
+            padding-top: 65%;
+            z-index: 3;
+        }
+
+        .green {
+            background-color: green;
+            width: 50%;
+            padding-top: 50%;
+            z-index: 4;
+        }
+
+        .yellow {
+            background-color: yellow;
+            width: 45%;
+            padding-top: 45%;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quadrado red">
+            <div class="quadrado black">
+                <div class="quadrado green">
+                    <div class="quadrado yellow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

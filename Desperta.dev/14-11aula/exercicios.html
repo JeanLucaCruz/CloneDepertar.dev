@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Crud de Veículos</title>
+    <style>
+      body {
+        background-image: url('./Desp.jpg'); 
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+        font-family: Arial, sans-serif; 
+        margin: 0; 
+        padding: 0;
+    }
+  
+      #conteudo {
+          background-color: rgba(255, 255, 255, 0.7);
+          padding: 20px;
+          margin: 20px;
+          border: 1px solid #888;
+          max-width: 1400px;
+          margin: 20px auto;
+          position: relative;
+          z-index: 1;
+          text-align: center;
+      }
+      
+      #fundo {
+          background-image: url('Desp.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+      }
+  
+      ul {
+          list-style-type: none;
+          padding: 0;
+      }
+  
+      li {
+          margin: 10px;
+          border: 5px solid #fff; 
+          border-radius: 100px; 
+          padding: 2px;
+          background-color: #084aff; 
+      }
+  
+      a {
+          color: #fff; 
+          text-decoration: none; 
+      }
+  
+      a:hover {
+           color: #3553a7;
+      }
+  
+      h1 {
+          font-size: 39px;
+          text-align: center;
+          color: rgb(206, 206, 230);
+      }
+  
+    </style>
+</head>
+</head>
+<body>
+      <h1>Sistema Crud de Veículos</h1>
+     <div id = "fundo"> <h1>Sistema Crud de Veículos</h1></div>
+     <div id = "conteudo"><h2>Obrigado por utilizar nossos serviços</h2></div>
+    <script>
+      const carros = [];
+
+      function exibirMenu() {
+          const escolha = prompt(
+              "Bem-vindo ao sistema de CRUD de veículos:\n\n" +
+              "No momento, o sistema tem " + carros.length + " carros cadastrados.\n\n" +
+              "Escolha uma das opções para interagir com o sistema:\n\n" +
+              "1 - Cadastrar veículo\n" +
+              "2 - Listar todos os veículos\n" +
+              "3 - Filtrar veículos por marca\n" +
+              "4 - Atualizar veículo\n" +
+              "5 - Remover veículo\n" +
+              "6 - Sair do sistema"
+          );
+
+          switch (escolha) {
+              case '1':
+                  cadastrarVeiculo();
+                  break;
+              case '2':
+                  listarVeiculos();
+                  break;
+              case '3':
+                  filtrarPorMarca();
+                  break;
+              case '4':
+                  atualizarVeiculo();
+                  break;
+              case '5':
+                  removerVeiculo();
+                  break;
+              case '6':
+                  alert("Obrigado por utilizar o sistema. Até logo!");
+                  break;
+              default:
+                  alert("Opção inválida. Tente novamente.");
+                  exibirMenu();
+          }
+      }
+
+        
+        function cadastrarVeiculo() {
+          const modelo = prompt("Digite o modelo do veículo:");
+          const marca = prompt("Digite a marca do veículo:");
+          const ano = prompt("Digite o ano do veículo:");
+          const cor = prompt("Digite a cor do veículo:");
+          const preco = prompt("Digite o preço do veículo:");
+        
+          const veiculo = {
+            id: carros.length + 1,
+            modelo: modelo,
+            marca: marca,
+            ano: ano,
+            cor: cor,
+            preco: parseFloat(preco),
+          };
+        
+          carros.push(veiculo);
+        
+          alert("Veículo cadastrado com sucesso!");
+          exibirMenu();
+        }
+        
+        function listarVeiculos() {
+          carros.sort((a, b) => a.preco - b.preco);
+        
+          let lista = "Lista de Veículos:\n";
+          for (const veiculo of carros) {
+            lista += `ID: ${veiculo.id} | Modelo: ${veiculo.modelo} | Marca: ${veiculo.marca} | Ano: ${veiculo.ano} | Cor: ${veiculo.cor} | Preço: R$${veiculo.preco}\n`;
+          }
+        
+          alert(lista);
+          exibirMenu();
+        }
+        
+        function filtrarPorMarca() {
+          const marcaFiltro = prompt("Digite a marca para filtrar:");
+          const veiculosFiltrados = carros.filter(veiculo => veiculo.marca.toLowerCase() === marcaFiltro.toLowerCase());
+        
+          veiculosFiltrados.sort((a, b) => a.preco - b.preco);
+        
+          let listaFiltrada = `Veículos da marca ${marcaFiltro}:\n`;
+          for (const veiculo of veiculosFiltrados) {
+            listaFiltrada += `ID: ${veiculo.id} | Modelo: ${veiculo.modelo} | Cor: ${veiculo.cor} | Preço: R$${veiculo.preco}\n`;
+          }
+        
+          alert(listaFiltrada);
+          exibirMenu();
+        }
+        
+        function atualizarVeiculo() {
+          const idAtualizar = parseInt(prompt("Digite o ID do veículo a ser atualizado:"));
+          const veiculo = carros.find(v => v.id === idAtualizar);
+        
+          if (!veiculo) {
+            alert("Veículo não encontrado. Voltando para o menu inicial.");
+            exibirMenu();
+          } else {
+            const novaCor = prompt("Digite a nova cor do veículo:");
+            const novoPreco = parseFloat(prompt("Digite o novo preço do veículo:"));
+        
+            veiculo.cor = novaCor;
+            veiculo.preco = novoPreco;
+        
+            alert("Veículo atualizado com sucesso!");
+            exibirMenu();
+          }
+        }
+        
+        function removerVeiculo() {
+          const idRemover = parseInt(prompt("Digite o ID do veículo a ser removido:"));
+          const indexRemover = carros.findIndex(v => v.id === idRemover);
+        
+          if (indexRemover === -1) {
+            alert("Veículo não encontrado. Voltando para o menu inicial.");
+            exibirMenu();
+          } else {
+            carros.splice(indexRemover, 1);
+            alert("Veículo removido com sucesso!");
+            exibirMenu();
+          }
+        }
+        
+        exibirMenu();
+        </script>
+    
+</body>
+</html>

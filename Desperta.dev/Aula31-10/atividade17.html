@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let totalEleitores = parseInt(prompt("Informe o número total de eleitores:"));
+let votosBrancos = parseInt(prompt("Informe o número de votos em branco:"));
+let votosNulos = parseInt(prompt("Informe o número de votos nulos:"));
+let votosValidos = parseInt(prompt("Informe o número de votos válidos:"));
+
+if (votosBrancos + votosNulos + votosValidos <= totalEleitores) {
+    let percentualBrancos = (votosBrancos / totalEleitores) * 100;
+    let percentualNulos = (votosNulos / totalEleitores) * 100;
+    let percentualValidos = (votosValidos / totalEleitores) * 100;
+
+    document.write("Percentual de votos em branco: " + percentualBrancos.toFixed(2) + "%<br>");
+    document.write("Percentual de votos nulos: " + percentualNulos.toFixed(2) + "%<br>");
+    document.write("Percentual de votos válidos: " + percentualValidos.toFixed(2) + "%<br>");
+} else {
+    document.write("A soma dos votos (brancos, nulos e válidos) não pode ser maior que o número total de eleitores.");
+}
+
+    </script>
+</body>
+</html>

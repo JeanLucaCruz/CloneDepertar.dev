@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade prática 12 - Arrays, objetos e funções</title>
+  <style>
+    body {
+        background-color: aquamarine;
+        background-attachment: fixed;
+        background-size: auto;
+        background-repeat: no-repeat;
+        
+    }
+
+    #conteudo {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 20px;
+        margin: 20px;
+        border: 1px solid #888;
+        max-width: 1400px;
+        margin: 20px auto;
+        position: relative;
+        z-index: 1;
+    }
+    
+    #fundo {
+        background-image: url('./Desp.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin: 10px;
+        border: 5px solid #fff; 
+        border-radius: 100px; 
+        padding: 2px;
+        background-color: #084aff; 
+    }
+
+    a {
+        color: #fff; 
+        text-decoration: none; 
+       
+    }
+
+    a:hover {
+         color: #3553a7;
+    }
+
+    h1 {
+        font-size: 39px;
+        text-align: center;
+        color: rgb(206, 206, 230);
+    }
+
+    
+</style>
+</head>
+<body>
+  <div id="fundo"></div>
+  <div id="conteudo">
+    <h3>1. Imprima no console a quantidade de pessoas Total.</h3>
+    <button onclick="exercicio1()">Exercício 1</button>
+    <!-- Adicione os parênteses para chamar a função exercicio1 -->
+
+    <h3>2. Imprima no console a quantidade de pessoas pessoas do sexo Feminino.</h3>
+    <button onclick="exercicio2()">Exercício 2</button>
+
+    <h3>3. Imprima no console a soma do salário de todas as pessoas.</h3>
+    <button onclick="exercicio3()">Exercício 3</button>
+
+    <h3>4. Imprima no console a média do salário de todas as pessoas.</h3>
+    <button onclick="exercicio4()">Exercício 4</button>
+
+    <h3>5. Imprima no console a soma do salário de todos as pessoas do sexo Masculino</h3>
+    <button onclick="exercicio5()">Exercício 5</button>
+
+    <h3>6. Imprima no console a média do salário de todas as pessoas do sexo Masculino</h3>
+    <button onclick="exercicio6()">Exercício 6</button>
+
+    <h3>7. Utilize a função Some, para descobrir se existe algum salário superior a R$ 7.000, imprima verdadeiro no console caso exista, caso contrário falso.</h3>
+    <button onclick="exercicio7()">Exercício 7</button>
+
+    <h3>8. Utilize a função findIndex, para descobrir a posição da pessoa de nome 'Eva Trindade'.</h3>
+    <button onclick="exercicio8()">Exercício 8</button>
+
+    <h3>9. Utilize a função filter, para filtrar todas pessoas que o nome possua o sobrenome "Silva".</h3>
+    <button onclick="exercicio9()">Exercício 9</button>
+
+    <h3>10. Imprima os nomes utilizando o MAP</h3>
+    <button onclick="exercicio10()">Exercício 10</button>
+  </div>
+   
+
+<script>
+const data = [
+  {
+    nome: 'Roger Medeiros',
+    sexo: 'M',
+    salario: 3250,
+  },
+  {
+    nome: 'Carolina Silva',
+    sexo: 'F',
+    salario: 1200,
+  },
+  {
+    nome: 'Cristina Avila',
+    sexo: 'F',
+    salario: 8100,
+  },
+  {
+    nome: 'Gustavo Hoffman',
+    sexo: 'M',
+    salario: 5200.35,
+  },
+  {
+    nome: 'Eva Trindade',
+    sexo: 'F',
+    salario: 2501,
+  },
+  {
+    nome: 'Andre Mathias',
+    sexo: 'M',
+    salario: 1750,
+  },
+  {
+    nome: 'Joice Castro da Silva',
+    sexo: 'F',
+    salario: 3350.25,
+  },
+];
+
+function exercicio1() {
+  document.write('Quantidade de pessoas Total: ' + data.length);
+}
+
+function exercicio2() {
+  const mulheres = data.filter(pessoa => pessoa.sexo === 'F');
+  document.write('Quantidade de mulheres: ' + mulheres.length);
+}
+
+function exercicio3() {
+  const somaSalarios = data.reduce((acumulador, pessoa) => acumulador + pessoa.salario, 0);
+  document.write('Soma dos salários: R$ ' + somaSalarios);
+}
+
+function exercicio4() {
+  const somaSalarios = data.reduce((acumulador, pessoa) => acumulador + pessoa.salario, 0);
+  const mediaSalarios = somaSalarios / data.length;
+  document.write('Média dos salários: R$ ' + mediaSalarios);
+}
+
+function exercicio5() {
+  const somaSalariosMasculino = data
+    .filter(pessoa => pessoa.sexo === 'M')
+    .reduce((acumulador, pessoa) => acumulador + pessoa.salario, 0);
+  document.write('Soma dos salários dos homens: R$ ' + somaSalariosMasculino);
+}
+
+function exercicio6() {
+  const homens = data.filter(pessoa => pessoa.sexo === 'M');
+  const somaSalariosMasculino = homens.reduce((acumulador, pessoa) => acumulador + pessoa.salario, 0);
+  const mediaSalariosMasculino = somaSalariosMasculino / homens.length;
+  document.write('Média dos salários dos homens: R$ ' + mediaSalariosMasculino);
+}
+
+function exercicio7() {
+  const temSalarioSuperiorA7000 = data.some(pessoa => pessoa.salario > 7000);
+  document.write('Tem salário superior a R$ 7.000: ' + temSalarioSuperiorA7000);
+}
+
+function exercicio8() {
+  const indiceEvaTrindade = data.findIndex(pessoa => pessoa.nome === 'Eva Trindade');
+  document.write('Índice de Eva Trindade: ' + indiceEvaTrindade);
+}
+
+function exercicio9() {
+  const pessoasComSobrenomeSilva = data.filter(pessoa => pessoa.nome.includes('Silva'));
+  const nomesSobrenomeSilva = pessoasComSobrenomeSilva.map(pessoa => pessoa.nome);
+  document.write('Pessoas com sobrenome Silva: ' + nomesSobrenomeSilva.join(', '));
+}
+
+function exercicio10() {
+  const nomes = data.map(pessoa => pessoa.nome);
+  document.write('Nomes: ' + nomes.join(', '));
+}
+</script>
+
+
+
+</body>
+</html>
+
