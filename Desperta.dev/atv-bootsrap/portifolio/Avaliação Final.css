@@ -1,0 +1,257 @@
+body {
+    font-family: "Arial Black", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+hr {
+    border: none;
+    border-top: 5px solid #072742;
+    margin: 10px 0;
+}
+
+/* Estilos do contêiner esquerdo */
+.left-container {
+    width: 25%;
+    background-color: #072742;
+    padding: 5%;
+    border: 1vw solid #fff;
+    border-radius: 0;
+    max-width: auto;
+    min-height: 25vh;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Estilos do contêiner esquerdo interno */
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Estilos da imagem do lado esquerdo */
+.left img {
+    background-color: #aaa;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 6px solid white;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilos do contêiner direito */
+.right {
+    width: 75%;
+    background-color: #ffffff;
+    padding: 2%;
+    min-height: 75vh;
+    position: relative;
+}
+
+/* Estilos do título */
+#Jean {
+    font-size: 5vw;
+    margin-left: 2%;
+    margin-bottom: -7%;
+    margin-top: 12%;
+}
+
+/* Estilos para cores */
+.color1 {
+    color: black;
+}
+
+.color2 {
+    color: #06354b;
+}
+
+/* Estilos para o endereço */
+#Endereço {
+    font-size: 2.0vw;
+    margin-left: 2%;
+    color: #000000;
+    margin-top: 7%;
+}
+
+/* Estilos para informações de contato */
+#Contato {
+    font-size: 2.0vw;
+    margin-left: 2%;
+    color: #000000;
+    margin-top: -5%;
+}
+
+/* Estilos para os títulos h2 e h3 */
+h2 {
+    font-size: 2.5vw;
+    margin-top: -2.5%;
+    margin-left: 2%;
+}
+
+h3 {
+    font-size: 2.5vw;
+    margin-left: 2%;
+    color: #000000;
+    margin-bottom: 5%;
+}
+
+/* Estilos para títulos específicos */
+#titulo-conhecimento {
+    color: #072742;
+    font-size: 4vw;
+    text-align: center;
+}
+
+#titulo-objetivos {
+    color: #072742;
+    font-size: 4vw;
+    text-align: center;
+}
+
+/* Estilos para o texto de objetivos */
+#p-objetivos {
+    text-align: justify;
+    font-size: 1.5vw;
+    margin-bottom: 20px;
+}
+
+/* Estilos para habilidades */
+#skills {
+    font-weight: bolder;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    font-size: 4vh;
+}
+
+/* Estilos para a seção "Sou" */
+#Sou {
+    font-size: 1.5vw;
+    margin-left: 2%;
+    margin-bottom: 4%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Estilos para os links */
+.links {
+    margin-top: 5%;
+    font-size: 3vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.links a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5vw;
+    margin-bottom: 3%;
+    color: #25a8db;
+    border-color: azure;
+    border-radius: 1vw;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: #c3ebeb;
+}
+
+/* Estilos para ícones sociais */
+.social-icons {
+    margin-top: 3%;
+    transition: color 0.3s;
+}
+
+.social-icons a {
+    color: #06354b;
+    text-decoration: none;
+    display: inline-flex;
+    margin-left: 2.5%;
+    font-size: 5vw;
+    transition: color 0.3s;
+    overflow: hidden;
+}
+
+.social-icons a:hover {
+    color: #c3ebeb;
+}
+
+/* Estilos para ícones de habilidades */
+.skills-icon:hover {
+    color: #072742;
+}
+
+/* Estilos responsivos para telas menores (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .left, .right {
+        width: 100%;
+        float: none;
+    }
+
+    .left img {
+        width: 100px;
+        height: 100px;
+        left: -3vw;
+        top: 0vh;
+    }
+
+    #Jean {
+        font-size: 6vw;
+        margin-left: 5%;
+        margin-top: 8%;
+    }
+
+    #Endereço {
+        font-size: 3vw;
+        margin-top: 7%;
+    }
+
+    #Contato {
+        font-size: 3vw;
+        margin-top: -5%;
+    }
+
+    .links {
+        font-size: 3.5vw;
+    }
+
+    .links a {
+        font-size: 3.5vw;
+        margin-bottom: 3%;
+    }
+
+    #p-objetivos {
+        font-size: 3vw;
+        padding: 1%;
+        margin-bottom: 20px;
+    }
+
+    #skills {
+        font-size: 3vh;
+        margin-left: 5%;
+    }
+
+    .social-icons a {
+        font-size: 3vh;
+    }
+
+    #Sou {
+        font-size: 1.2vw;
+        margin-left: 5%;
+    }
+}
