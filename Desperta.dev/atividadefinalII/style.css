@@ -66,7 +66,7 @@ header {
     justify-content: center;
     align-items: center;
     border: 10px solid rgba(3, 251, 20, 0.8);
-    background-color: #18e006;
+    background-image: url(./galaxias.gif);
     box-shadow: 90px rgba(3, 251, 20, 0.8);
     animation: pulse 0.5s infinite;
 }
@@ -263,9 +263,9 @@ h2 {
     }
 
     .status1 {
-        margin-top: 10px; /* Ajuste conforme necessário para tamanhos de tela menores */
-        font-size: 0.8em; /* Ajuste conforme necessário para tamanhos de tela menores */
-        padding: 0.5em; /* Ajuste conforme necessário para tamanhos de tela menores */
+        margin-top: 10px; 
+        font-size: 0.8em; 
+        padding: 0.5em; 
     }
 }
 
