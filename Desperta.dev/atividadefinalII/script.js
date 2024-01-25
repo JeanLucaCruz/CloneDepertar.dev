@@ -1,7 +1,7 @@
 class RickAndMortyApi {
     constructor() {
         this.api = axios.create({ baseURL: "https://rickandmortyapi.com/api" });
-        this.listColumns = [document.getElementById("list-column-1"), document.getElementById("list-column-2"),document.getElementById("list-column-3")];
+        this.listColumns = [document.getElementById("list-column-1"), document.getElementById("list-column-2"), document.getElementById("list-column-3")];
         this.nextUrl = this.prevUrl = null;
         this.page = 1;
         this.cardsPerPage = 6;
@@ -38,7 +38,7 @@ class RickAndMortyApi {
 
         let cardsCounter = 0;
 
-        for (const [index, character] of this.paginateCharacters(characters).entries()) {
+        for (const character of characters) {
             const characterCard = await this.createCharacterCard(character);
             const targetColumn = this.listColumns[cardsCounter < this.cardsPerPage / 3 ? 0 : 1];
             targetColumn.appendChild(characterCard);
@@ -47,8 +47,9 @@ class RickAndMortyApi {
                 targetColumn.appendChild(this.createCardDivider());
             }
 
-            if (cardsCounter === characters.length) {
-                this.updatePagination(index);
+            if (cardsCounter === this.cardsPerPage) {
+                cardsCounter = 0;
+                targetColumn.appendChild(this.createCardDivider());
             }
         }
 
@@ -188,7 +189,7 @@ class RickAndMortyApi {
     }
 
     renderPaginationInfo() {
-        
+        // Não é necessário com a modificação
     }
 
     changePage(url) {
@@ -230,19 +231,18 @@ class RickAndMortyApi {
     openModal(characterId) {
         const modal = document.getElementById("characterInformation");
         modal.style.display = "block";
-    
+
         // Adiciona um botão "Fechar" no modal
         const closeButton = document.createElement("button");
-        closeButton.innerHTML = "&times;"; 
+        closeButton.innerHTML = "&times;";
         closeButton.className = "close-button";
         closeButton.addEventListener("click", () => this.closeModal());
-    
+
         const modalHeader = document.querySelector(".modal-header");
         modalHeader.appendChild(closeButton);
-    
+
         this.fetchAndFillCharacterData(characterId);
     }
-    
 
     closeModal() {
         const modal = document.getElementById("characterInformation");
@@ -263,14 +263,10 @@ class RickAndMortyApi {
             const lastEpisode = (await this.api.get(lastEpisodeUrl)).data;
             document.getElementById("last-episode").textContent = `Visto a última vez em: ${lastEpisode.name}`;
 
-            
             document.getElementById("episode-count").textContent = `Quantidade de episódios: ${characterData.episode.length}`;
 
-            
             document.getElementById("character-image").src = characterData.image;
             document.getElementById("character-image").alt = `Imagem de ${characterData.name}`;
-
-
 
         } catch (err) {
             this.handleError(err);
@@ -278,13 +274,11 @@ class RickAndMortyApi {
     }
 
     paginateCharacters(characters) {
-        const startIndex = (this.page - 1) * this.cardsPerPage;
-        return characters.slice(startIndex, startIndex + this.cardsPerPage);
+        return characters;
     }
 
     handleError(error) {
         console.error("Erro na requisição:", error);
-        
     }
 }
 

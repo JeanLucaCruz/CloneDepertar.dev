@@ -6,9 +6,11 @@
 body {
     background-image: url('./FUNDO.jpg');
     font-family: "Roboto", sans-serif;
-    font-size: 100%;
-    background-size: cover;
+    background-size:cover, 200vw;
+    background-position: calc(0.5% + -400px);
+    
 }
+
 
 header {
     background-image: url('./wp-header-logo-4098.png');
@@ -84,14 +86,15 @@ header {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    font-size: 2px;
+    font-size: 1.5px;
 }
 
 
 
 .status1 {
-    margin-top: 30px;
-    font-size: small;
+    margin-top: 5%;
+    font-size: 1em;
+    padding: 1em;
 }
 
 #characterInformation {
@@ -208,7 +211,7 @@ h2 {
     margin: 0 auto;
     background-color: rgb(62, 62, 61);
     border-radius: 5px;
-    box-shadow: 10px 15px 10px 15px rgb(3, 232, 14);
+    box-shadow: 5px 10px 5px 10px rgb(3, 232, 14);
     text-align: left;
     overflow: hidden;
     display: flex;
@@ -216,6 +219,7 @@ h2 {
     justify-content: left;
     animation: pulse 0.5s infinite;
     margin-top: 0%;
+    animation: floatAnimation 2s infinite ease-in-out;
 }
 
 .pStatus {
@@ -256,6 +260,12 @@ h2 {
 
     .buttons {
         flex-direction: column; 
+    }
+
+    .status1 {
+        margin-top: 10px; /* Ajuste conforme necessário para tamanhos de tela menores */
+        font-size: 0.8em; /* Ajuste conforme necessário para tamanhos de tela menores */
+        padding: 0.5em; /* Ajuste conforme necessário para tamanhos de tela menores */
     }
 }
 
@@ -320,8 +330,8 @@ h2 {
 }
 
 .statusColor {
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     margin-right: 5px;
     display: inline-block;
@@ -383,18 +393,30 @@ img.figura {
 
 footer {
     background-color: #494c4a; 
-    margin-bottom: 0%;
+    margin-bottom: -10px;
     margin-top: 40%;
     color: #0c0909;
-    height: 150px;
+    height: 300px;
     width: 100%;
     text-align: center;
     padding: 0px;
+    box-shadow: 0 0 10px rgba(5, 209, 32, 0.8); 
+    border: 2px solid #05d120; 
+    border-radius: 10px;
 }
 
 #credits {
     font-weight: 700;
     color: #4d9f4b;
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Altere o valor conforme necessário */
+    }
 }
 
 @keyframes flip {
@@ -432,4 +454,15 @@ footer {
     .buttons {
         flex-direction: column; 
     }
+
+    .status1 {
+        margin-top: 10px; /* Ajuste conforme necessário para tamanhos de tela menores */
+        font-size: 0.8em; /* Ajuste conforme necessário para tamanhos de tela menores */
+        padding: 0.5em; /* Ajuste conforme necessário para tamanhos de tela menores */
+    }
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+    transition: transform 0.3s ease;
 }
