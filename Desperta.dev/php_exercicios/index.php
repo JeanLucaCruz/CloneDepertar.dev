@@ -1,4 +1,15 @@
-<?php
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades</title>
+</head>
+
+<body>
+
+    <?php
 session_start();
 
 // Função para cadastrar um novo produto na sessão
@@ -44,16 +55,10 @@ if(isset($_POST['submit'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividades</title>
-</head>
-<body>
+
     <h1>Atividades</h1>
-    <ul><h2>Atividade 1</h2>
+    <ul>
+        <h2>Atividade 1</h2>
         <?php
 function calcularMedia($nota1, $nota2) {
     $media = ($nota1 + $nota2) / 2;
@@ -66,10 +71,11 @@ $notas = calcularMedia(7, 8);
 echo "Média: " . $notas['media'] . "<br>";
 echo ($notas['aprovado']) ? "Aprovado" : "Reprovado";
 ?>
-</ul>
+    </ul>
 
-<ul><h2>Atividade 2</h2>
-<?php
+    <ul>
+        <h2>Atividade 2</h2>
+        <?php
 function calcularMediaPonderada($notas) {
     $totalNotas = 0;
     $totalPesos = 0;
@@ -87,10 +93,12 @@ echo "Média: " . calcularMediaPonderada($notas);
 ?>
 
 
-</ul><h1>Atividade 3</h1>
+    </ul>
+    <h1>Atividade 3</h1>
 
 
-    <ul> <h2>Lista Produtos Abaixo</h2>
+    <ul>
+        <h2>Lista Produtos Abaixo</h2>
         <?php 
         // Lista todos os produtos cadastrados
         $produtos = listarProdutos();
@@ -112,4 +120,5 @@ echo "Média: " . calcularMediaPonderada($notas);
         <input type="submit" name="submit" value="Cadastrar Produto">
     </form>
 </body>
+
 </html>
