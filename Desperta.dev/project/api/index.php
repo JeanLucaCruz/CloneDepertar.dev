@@ -13,22 +13,30 @@
 <body>
 
 <h1>Contador</h1>
-<?php require('contador.php'); ?>
+
+<?php require('contador.php');
+require('/var/task/project/api/contador.php'); ?>
 
 <hr>
 
 <h1>Bola</h1>
-<?php require('bola.php'); ?>
+<?php require('bola.php'); 
+require('/var/task/user/api/bola.php');
+?>
 
 <hr>
 
 <h1>Conta</h1>
-<?php require('conta.php'); ?>
+<?php require('conta.php');
+require('/var/task/user/api/conta.php');
+?>
 
 <hr>
 
 <h1>Calculadora</h1>
-<?php require('calculadora.php'); ?>
+<?php require('calculadora.php');
+require('/var/task/user/api/calculadora.php');
+?>
 
 <hr>
 
