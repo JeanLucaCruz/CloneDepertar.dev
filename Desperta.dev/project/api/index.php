@@ -15,6 +15,7 @@
 <h1>Contador</h1>
 
 <?php require('contador.php');
+
 require('/var/task/project/api/contador.php'); ?>
 
 <hr>
