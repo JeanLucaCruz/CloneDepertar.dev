@@ -6,7 +6,7 @@
     <title>Meu Índice</title>
     <style>
         body {
-            background-color: #e0f2f1; /* Azul claro */
+            background-color: #e0f2f1; 
         }
     </style>
 </head>

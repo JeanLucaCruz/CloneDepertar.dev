@@ -2,9 +2,9 @@
 
 class ContaCorrente {
     // Atributos
-    private $numeroConta;
-    private $correntista;
-    private $saldo;
+    public $numeroConta;
+    public $correntista;
+    public $saldo;
 
     // Construtor
     public function __construct($numeroConta, $correntista, $saldo = 0) {
